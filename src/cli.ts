@@ -17,6 +17,9 @@ export const createCLI = (): Command => {
     .option('--no-files', 'Show directories only')
     .option('-s, --sort <type>', 'Sort by: name, size, tokens', 'name')
     .option('-t, --threshold <number>', 'Minimum tokens to display', (value) => parseInt(value))
+    .option('--cost', 'Show cost estimates for AI models')
+    .option('--models <models>', 'Models to show costs for (comma-separated)', (value) => value.split(','))
+    .option('--output-ratio <ratio>', 'Output token ratio for cost estimation', (value) => parseFloat(value), 0.5)
 
   return program
 }
@@ -32,7 +35,10 @@ export const parseOptions = (program: Command): Options => {
     json: opts.json,
     noFiles: opts.noFiles,
     sort: opts.sort,
-    threshold: opts.threshold
+    threshold: opts.threshold,
+    cost: opts.cost,
+    models: opts.models,
+    outputRatio: opts.outputRatio
   }
 
   const result = OptionsSchema.safeParse(options)

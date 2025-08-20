@@ -5,6 +5,8 @@ import { createCLI, parseOptions } from './cli.js'
 import { FileTraverser } from './file-traverser.js'
 import { TreeBuilder } from './tree-builder.js'
 import { TreeRenderer } from './tree-renderer.js'
+import { CostCalculator } from './cost-calculator.js'
+import { CostFormatter } from './cost-formatter.js'
 
 async function main() {
   const program = createCLI()
@@ -37,6 +39,23 @@ async function main() {
 
     const output = renderer.render(treeResult.data)
     console.log('\n' + output)
+
+    // Show cost estimates (always displayed)
+    const costCalculator = new CostCalculator({
+      outputRatio: options.outputRatio || 0.5,
+      selectedModels: options.models
+    })
+    const costFormatter = new CostFormatter(costCalculator)
+    
+    // Calculate total tokens
+    const totalTokens = treeResult.data.tokens
+    
+    // Get cost estimates
+    const estimates = costCalculator.calculateCosts(totalTokens)
+    
+    // Render cost table
+    const costTable = costFormatter.renderCostTable(estimates)
+    console.log('\n' + costTable)
 
     builder.dispose()
 

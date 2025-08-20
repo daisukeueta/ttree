@@ -19,7 +19,10 @@ export const OptionsSchema = z.object({
   json: z.boolean().optional(),
   noFiles: z.boolean().optional(),
   sort: z.enum(['name', 'size', 'tokens']).optional(),
-  threshold: z.number().nonnegative().optional()
+  threshold: z.number().nonnegative().optional(),
+  cost: z.boolean().optional(),
+  models: z.array(z.string()).optional(),
+  outputRatio: z.number().positive().optional()
 })
 
 export type Options = z.infer<typeof OptionsSchema>
