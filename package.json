@@ -1,18 +1,7 @@
 {
-  "name": "ttree",
+  "name": "@daisukeueta/ttree",
   "version": "0.1.0",
   "description": "Tree-format directory structure display with token counting",
-  "main": "dist/index.js",
-  "bin": {
-    "ttree": "./dist/index.js"
-  },
-  "scripts": {
-    "build": "tsup src/index.ts --format cjs --target node18 --clean --shims",
-    "dev": "tsx src/index.ts",
-    "test": "vitest",
-    "lint": "eslint src --ext .ts",
-    "format": "prettier --write src/**/*.ts"
-  },
   "keywords": [
     "cli",
     "tree",
@@ -20,8 +9,32 @@
     "directory",
     "files"
   ],
-  "author": "",
+  "homepage": "https://github.com/daisukeueta/ttree#readme",
+  "bugs": {
+    "url": "https://github.com/daisukeueta/ttree/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daisukeueta/ttree.git"
+  },
   "license": "MIT",
+  "author": "daisukeueta",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "bin": {
+    "ttree": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs --target node18 --clean --shims",
+    "dev": "tsx src/index.ts",
+    "test": "vitest",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write src/**/*.ts"
+  },
   "dependencies": {
     "commander": "^12.0.0",
     "tiktoken": "^1.0.15",
