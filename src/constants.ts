@@ -22,7 +22,7 @@ export const BINARY_EXTENSIONS = new Set([
 
 export const TEXT_EXTENSIONS = new Set([
   '.js', '.jsx', '.ts', '.tsx', '.vue', '.svelte',
-  '.py', '.rb', '.php', '.go', '.rs', '.java', '.kt', '.scala',
+  '.py', '.rb', '.php', '.go', '.rs', '.java', '.kt', '.scala', '.dart',
   '.c', '.cpp', '.h', '.hpp', '.cs', '.swift',
   '.html', '.htm', '.css', '.scss', '.sass', '.less',
   '.json', '.xml', '.yaml', '.yml', '.toml',
